@@ -33,3 +33,4 @@ This setting of vimrc provides vim editor with file system explorer on left pane
 	}
 }
 ```
+7. Install [powerline fonts](https://github.com/powerline/fonts) and set terminal to use `Hack` font or any other powerline font.
