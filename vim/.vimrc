@@ -136,6 +136,9 @@ let maplocalleader = ";"
 	let g:go_highlight_function_calls = 1
 	let g:go_highlight_extra_types = 1
 	let g:go_highlight_operators = 1
+	let g:go_highlight_diagnostic_errors = 1
+	let g:go_highlight_diagnostic_warnings = 1
+	let g:go_diagnostics_level = 2
 
 	"miscellaneous settings
 	let g:go_list_height = 10
