@@ -15,6 +15,7 @@ filetype plugin indent on
 	set foldenable
 	set splitbelow
 	set mouse=a
+	set backspace=indent,eol,start
 	set encoding=utf-8 " set unicode
 	set background=dark
 	set completeopt=menu,longest " for autocompletion it open menu and let's you type and select suggestion
@@ -95,7 +96,7 @@ let maplocalleader = ";"
 " }}}
 
 " FZF settings {{{
-	nnoremap <silent> <leader>f :Files<CR>	
+	nnoremap <silent> <leader>f :FZF<CR>
 " }}}
 
 " Vim Airline settings {{{
@@ -129,7 +130,7 @@ let maplocalleader = ";"
 
 " Vim Go settings {{{
 	" vim cheetsheet: https://gist.github.com/krlvi/d22bdcb66566261ea8e8da36f796fa0a
-	
+
 	" go syntax highlighting
 	let g:go_highlight_fields = 1
 	let g:go_highlight_functions = 1
@@ -142,6 +143,7 @@ let maplocalleader = ";"
 
 	"miscellaneous settings
 	let g:go_list_height = 10
+	let g:go_doc_popup_window = 1
 
 	" autoformatting and importing
 	let g:go_fmt_autosave = 1
@@ -161,20 +163,26 @@ let maplocalleader = ";"
 	function! GolangMappings()
 		nnoremap <localleader>gd :GoDef<CR>
 		nnoremap <localleader>gr :GoReferrers<CR>
-		nnoremap <localleader>r :GoRename<CR>:wa<CR>
-	
-		" locationn list helpers for golang	
+		nnoremap <localleader>r :GoRename<CR>
+		nnoremap <localleader>d :GoDoc<CR>
+
+		" location list helpers for golang
 		nnoremap <localleader>q :call GolangListToggle()<cr>
 		nnoremap <localleader>n :lnext<cr>
 		nnoremap <localleader>p :lprevious<cr>
-		"autocompletion mapping	
+
+		"autocompletion mapping
 		inoremap <buffer>. .<C-x><C-o>
 		" use <c-space> to trigger completion
 		if has('nvim')
 			inoremap <silent> <C-space> <C-x><C-o>
 		else
 			inoremap <silent> <C-@> <C-x><C-o>
-		endif	
+		endif
+
+		" debug settings
+		nnoremap <localleader>ds :GoDebugStart
+		nnoremap <localleader>dt :GoDebugTest
 	endfunction
 
 
@@ -191,6 +199,12 @@ let maplocalleader = ";"
 			let g:golanglist_is_open = 1
 		endif
 	endfunction
+" }}}
+
+" Ultisnips settings {{{
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<tab>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 " }}}
 
 augroup filetype_vim
