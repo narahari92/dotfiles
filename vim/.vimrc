@@ -207,6 +207,10 @@ let maplocalleader = ";"
 	let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 " }}}
 
+" Tagbar settings {{{
+	nnoremap <localleader>t :TagbarToggle<CR>
+" }}}
+
 augroup filetype_vim
 	autocmd!
 	autocmd FileType vim setlocal foldmethod=marker
