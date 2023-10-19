@@ -97,6 +97,8 @@ let maplocalleader = ";"
 
 " FZF settings {{{
 	nnoremap <silent> <leader>f :FZF<CR>
+	nnoremap <silent> <leader>s :Rg<CR>
+	nnoremap <silent> <leader>S :RG<CR>
 " }}}
 
 " Vim Airline settings {{{
