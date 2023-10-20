@@ -53,6 +53,10 @@ let maplocalleader = ";"
 	inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 	inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 	inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
+	" mappings related to buffers
+	nnoremap <silent> <S-n> :bnext<CR>
+	nnoremap <silent> <S-p> :bprevious<CR>
 " }}}
 
 " quick fix mappings {{{
@@ -165,6 +169,7 @@ let maplocalleader = ";"
 	function! GolangMappings()
 		nnoremap <localleader>gd :GoDef<CR>
 		nnoremap <localleader>gr :GoReferrers<CR>
+		nnoremap <localleader>gi :GoImplements<CR>
 		nnoremap <localleader>r :GoRename<CR>
 		nnoremap <localleader>d :GoDoc<CR>
 
