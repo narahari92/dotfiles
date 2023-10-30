@@ -19,6 +19,7 @@ filetype plugin indent on
 	set encoding=utf-8 " set unicode
 	set background=dark
 	set completeopt=menu,longest " for autocompletion it open menu and let's you type and select suggestion
+	set noswapfile
 	colorscheme lucius
 " }}}
 
@@ -55,8 +56,8 @@ let maplocalleader = ";"
 	inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 	" mappings related to buffers
-	nnoremap <silent> <S-n> :bnext<CR>
-	nnoremap <silent> <S-p> :bprevious<CR>
+	nnoremap <silent> bn :bnext<CR>
+	nnoremap <silent> bp :bprevious<CR>
 " }}}
 
 " quick fix mappings {{{
@@ -218,6 +219,23 @@ let maplocalleader = ";"
 	nnoremap <localleader>t :TagbarToggle<CR>
 " }}}
 
+" Coc.nvim settings {{{
+	function! s:disable_coc_for_type()
+		let l:coc_filetypes_enable = ['c', 'cpp', 'h', 'hpp', 'graphql']
+
+		if index(l:coc_filetypes_enable, &filetype) == -1
+			:silent! CocDisable
+		else
+			:silent! CocEnable
+		endif
+	endfunction
+
+	augroup CocGroup
+		autocmd!
+		autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
+	augroup end
+" }}}
+	
 augroup filetype_vim
 	autocmd!
 	autocmd FileType vim setlocal foldmethod=marker
