@@ -6,6 +6,7 @@ filetype plugin indent on
 
 " set options {{{
 	set number
+	set hidden
 	set wrap
 	set numberwidth=3
 	set tabstop=4
@@ -162,6 +163,21 @@ let maplocalleader = ";"
 	" status line types/signatures
 	let g:go_auto_type_info = 1
 
+	" debugger settings
+	let g:go_debug_windows = {
+	\ 'vars':  'rightbelow 60vnew',
+	\ 'stack':      'rightbelow 10new',
+	\ }
+
+	let g:go_debug_mappings = {
+	\ '(go-debug-continue)':   {'key': '<F5>'},
+	\ '(go-debug-print)':      {'key': '<F6>'},
+	\ '(go-debug-breakpoint)': {'key': '<F9>'},
+	\ '(go-debug-next)':       {'key': '<F10>'},
+	\ '(go-debug-step)':       {'key': '<F8>'},
+	\ '(go-debug-stepout)':    {'key': '<F12>'}
+	\ }
+
 	augroup filetype_go
 		autocmd!
 		autocmd FileType go :call GolangMappings()
@@ -189,8 +205,9 @@ let maplocalleader = ";"
 		endif
 
 		" debug settings
-		nnoremap <localleader>ds :GoDebugStart
-		nnoremap <localleader>dt :GoDebugTest
+		nnoremap <localleader>ds :GoDebugStart<cr>
+		nnoremap <localleader>dt :GoDebugTest<cr>
+		nnoremap <localleader>dq :GoDebugStop<cr>
 	endfunction
 
 
